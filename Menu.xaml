@@ -1,0 +1,26 @@
+﻿<Window x:Class="asteroids.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:asteroids"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Asteroids" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="70" Foreground="Black" Text="Asteroids"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="346,6,346,105">
+            <Button x:Name="start" Width="300" Margin="0 20" Foreground="White" Background="DodgerBlue" Padding="0 10" FontSize="20" Click="startGame" Content="Start"/>
+            <Button x:Name="results" Width="300" Margin="0 20" Foreground="White" Background="DodgerBlue" Padding="0 10" FontSize="20" Click="showResults" Content="Ranking"/>
+            <Button x:Name="exit" Width="300" Margin="0 20" Foreground="White" Background="DodgerBlue" Padding="0 10" FontSize="20" Click="exitGame" Content="Wyjście"/>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="367,300,0,0" Grid.Row="1" FontSize="25" Foreground="Black" TextWrapping="Wrap" Text="Artur Bąkowski @ 2021" VerticalAlignment="Top" Width="260" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="392,332,0,0" Grid.Row="1" FontSize="12" Foreground="Black" TextWrapping="Wrap" Text="Projektowanie interfejsów graficznych" VerticalAlignment="Top" Height="16" Width="200"/>
+    </Grid>
+</Window>

@@ -1,0 +1,66 @@
+﻿<Window x:Class="asteroids.Game"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:asteroids"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Asteroids - Gra" Height="600" Width="1000"
+        Loaded="Window_Loaded">
+    
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="PointsLabel">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/bg.png"/>
+        </Grid.Background>
+        <Canvas x:Name="Board">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="White" FontSize="20" Margin="10 10 0 0">Wynik:</TextBlock>
+                <TextBlock Foreground="White" FontSize="20" Margin="10 10 0 0" Text="{Binding Result}"></TextBlock>
+            </StackPanel>
+            <Image x:Name="shipObject" Width="100" Height="100" Canvas.Left="445" Source="Assets/ship.png" Canvas.Bottom="0"/>
+            <StackPanel Visibility="{Binding IsGameOver, Converter={StaticResource BoolToVis}}" Background="#CC060613" Canvas.Top="0" Canvas.Left="0" Canvas.Right="0" Canvas.Bottom="0" Panel.ZIndex="1000" Width="990" Height="570">
+                <Grid Height="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource PointsLabel}"
+                                   FontSize="50" 
+                                   Text="Koniec gry!"/>
+                        <TextBox x:Name="Nickname" 
+                                 FontSize="30"
+                                 Text="Nazwa"
+                                 Visibility="{Binding ShouldBeSaveResult, Converter={StaticResource BoolToVis}}" 
+                                 Margin="0 10 0 10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource PointsLabel}"
+                                   Text="Punkty:"/>
+                        <TextBlock Style="{StaticResource PointsLabel}"
+                                   Margin="20 0 0 0" 
+                                   Text="{Binding Result}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="startAgainButton" Width="300" Margin="0 20" Foreground="White" Background="DodgerBlue" Padding="0 10" FontSize="20" Click="startAgain">Start</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="exitGameButton" Width="300" Margin="0 20" Foreground="White" Background="DodgerBlue" Padding="0 10" FontSize="20" Click="exitGame">Wyjdź</Button>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Canvas>
+    </Grid>
+</Window>
